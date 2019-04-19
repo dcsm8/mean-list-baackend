@@ -5,9 +5,13 @@ import * as express from 'express';
 import * as logger from 'morgan';
 import * as path from 'path';
 import * as mongoose from 'mongoose';
+import * as cors from 'cors';
 
 export default function () {
     var app: express.Express = express();
+
+    app.use(cors());
+    app.options('*', cors());
 
     for (let model of config.globFiles(config.models)) {
         require(path.resolve(model));

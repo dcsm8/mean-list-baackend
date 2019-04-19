@@ -13,7 +13,18 @@ export default class PostController {
                 id: "asd789a6as8d",
                 title: "Title 2",
                 content: "Content 2"
+            },
+            {
+                id: "asd657asd",
+                title: "Title 3",
+                content: "Content 3"
+            },
+            {
+                id: "asd98a76sd",
+                title: "Title 4",
+                content: "Content 4"
             }
+
         ];
 
         res.status(200).json({
