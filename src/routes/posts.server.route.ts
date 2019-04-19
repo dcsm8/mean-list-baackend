@@ -5,5 +5,8 @@ export default class PostsRoute {
     constructor(app: Express) {
         app.route('/api/posts')
             .get(postController.index);
+
+        app.route('/api/posts')
+            .post(postController.post);
     }
 }

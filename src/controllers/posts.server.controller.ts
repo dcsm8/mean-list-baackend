@@ -2,8 +2,11 @@ import { Request, Response } from 'express';
 import { Post } from "../models/post.model";
 
 export default class PostController {
-    public index(req: Request, res: Response, next: Function): void {
-        const posts: Post[] = [
+
+    posts: Post[] = [];
+
+    constructor() {
+        this.posts = [
             {
                 id: "asd675as6dsa",
                 title: "Title 1",
@@ -24,12 +27,21 @@ export default class PostController {
                 title: "Title 4",
                 content: "Content 4"
             }
-
         ];
+    }
 
+    public index = (req: Request, res: Response, next: Function): void => {
         res.status(200).json({
             message: "Posts fetched succesfully!",
-            posts: posts
+            posts: this.posts
+        });
+    }
+
+    public post = (req: Request, res: Response, next: Function): void => {
+        const post = req.body;
+        this.posts.push(post);
+        res.status(201).json({
+            message: "Post added successfully!"
         });
     }
 }
